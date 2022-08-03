@@ -1,11 +1,11 @@
 # Blue Green Deployment
 
-Here you find the details of the steps to adopt the blue green deployment pattern. The reference implementation is based on the existing secure baseline implementation with the addition of new data structure to add abstraction to manage multiple AKS clusters, in this case 2 AKS clusters, the blue and green, and additional supporting azure resources like: Application Gateway and Public DNS Zone.
+Here you find the details of the steps to deploy the blue green pattern. The reference implementation is based on the existing secure baseline implementation with the addition of new data structure to add abstraction to manage multiple AKS clusters, in this case 2 AKS clusters, the blue and green, and additional supporting azure resources like: Application Gateway and Public DNS Zone.
 
 The new introduced data structures are:
 
 - Application Gateway map to deploy the blue and green Application Gateways, there is a one to one mapping between the AKS clusters and Application Gateways due to the adoption of the AGIC addon for AKS.
-Below the data structure and related documentation. By default only the blue application gateway is deployed.
+Below is the data structure and related documentation. By default only the blue application gateway is deployed.
 
 ```
 locals {
@@ -53,8 +53,8 @@ locals {
 
 As part of the blue green deployment there is also a dedicated public DNS zone to register the 3 hostnames required to implment the pattern:
 - Public facing hostname, the one used by the end users of the workloads/apps hosted into the clusters
-- blue cluster hostname, that is dedicated fot the internal validation
-- green cluster hostname, that is dedicated fot the internal validation
+- blue cluster hostname, that is dedicated for the internal validation
+- green cluster hostname, that is dedicated for the internal validation
 
 The blue/green deployment can be summarized in 5 steps:
 1. T0: Blue Cluster is On, this means:
@@ -119,7 +119,7 @@ locals {
 
 ```
 
-After the deployment if the Landing Zone, than is possible to install a test application. The sample application to use is stored in the file "Scenarios\AKS-Secure-Baseline-PrivateCluster\Terraform\07-AKS-cluster\sample-workload-for-agic-test.yaml".
+After the deployment of the Landing Zone, than is possible to install a test application. The sample application to use is stored in the file "Scenarios\AKS-Secure-Baseline-PrivateCluster\Terraform\07-AKS-cluster\sample-workload-for-agic-test.yaml".
 
 To deploy the sample application follow the same steps described at [Workload](./08-workload.md), the main difference is to apply the sample yaml to deploy the app.
 
