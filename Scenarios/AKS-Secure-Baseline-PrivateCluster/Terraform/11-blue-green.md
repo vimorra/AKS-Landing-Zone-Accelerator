@@ -119,6 +119,10 @@ locals {
 
 ```
 
+### Step 1 Deploy the Private cluster scenario
+Follow the steps starting [here](./02-state-storage.md) to deploy the private cluster using the default values if you haven't already but do not deploy the workload (stage 08). 
+> :warning: Do not deploy the fruit smoothie application highlighted in step 08-workload.md
+
 After the deployment of the Landing Zone, than is possible to install a test application. The sample application to use is stored in the file "Scenarios\AKS-Secure-Baseline-PrivateCluster\Terraform\07-AKS-cluster\sample-workload-for-agic-test.yaml".
 
 To deploy the sample application follow the same steps described at [Workload](./08-workload.md), the main difference is to apply the sample yaml to deploy the app.
@@ -203,7 +207,7 @@ If the validation is ok, than the new cluster can be promoted as new production/
 ## T3: Traffic Switch to the green cluster
 
 In this step is required to update the DNS A Record in order to switch the traffic to the PIP assigned to the green cluster.
-You need to run the flow describe [here](./09-dns-records.md) with the following var in input.
+You need to run the flow describe [here](./11-dns-records.md) with the following var in input.
 
 ```
 arecords_apps_map = {
